@@ -18,7 +18,7 @@ a {
 }
 #logotext {
   color:white;
-  font-family:futura;
+  font-family:"Oswald",sans-serif;
   font-size:35px;
 }
 .toplink{
@@ -26,6 +26,6 @@ a {
   border-right:2px solid #770404;
 }
 #logo {
-  width:200px;
+  width:145px;
   height:100%;
 }
