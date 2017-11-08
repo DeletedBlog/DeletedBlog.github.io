@@ -42,7 +42,7 @@ $("#button").click(function(){
       empty();
       $("#textbox").append("Login Successful");
       setTimeout(empty, 5000);
-      window.location = "Chatsup.html";
+      window.location = "test.html";
     }else if (!correct) {
       empty();
       $("#textbox").append("Incorrect Username or Password");
