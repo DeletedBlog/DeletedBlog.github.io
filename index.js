@@ -1,4 +1,4 @@
-var bcrypt = require('bcryptjs');
+var bcrypt = require('https://cdn.jsdelivr.net/npm/bcrypt@1.0.3/bcrypt.min.js');
 
 $(document).ready(function(){
 //Above function runs this code on HTML startup
