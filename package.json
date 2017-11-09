@@ -1,8 +1,0 @@
-{
-  "name": "chatsup.github.io",
-  "description": "a really cool app",
-  "version": "0.0.1",
-  "engines": {
-    "node": "6.11.1"
-  }
-}
