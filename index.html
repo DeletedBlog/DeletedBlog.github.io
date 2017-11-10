@@ -135,7 +135,7 @@ button:focus {
       $(function () {
         var socket = io();
         $(document).ready(function(){
-          username = window.prompt("What is your username?","anonymous");
+          enteredusnm = window.prompt("What is your username?","anonymous");
           var msgheight = $(window).height() - 150;
           $("#messages").attr('style',' overflow: scroll; width: 100%; height: ' + msgheight.toString() +'px;');
         });
@@ -145,13 +145,15 @@ button:focus {
         });
         $("#send").click(function(){
           socket.emit('chat message', $('#input').val());
-          socket.emit('username', username);
+          socket.emit('username', enteredusnm);
           $('#input').val('');
           return false;
         });
-        
+        socket.on('username', function(usnm){
+          receivedusnm = usnm;
+        });
         socket.on('chat message', function(msg){
-          $('#messages').append("<div class=\"message\"><p class=\"username\">" + "test" + "</p><p class=\"messagetext\">" + msg + "</p></div>");
+          $('#messages').append("<div class=\"message\"><p class=\"username\">" + "receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
         });
       });
     </script>
