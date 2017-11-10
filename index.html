@@ -134,11 +134,11 @@ button:focus {
     <script>
       $(function () {
         var socket = io();
-        
+        $(document).ready(function(){
           username = window.prompt("What is your username?","anonymous");
           var msgheight = $(window).height() - 150;
           $("#messages").attr('style',' overflow: scroll; width: 100%; height: ' + msgheight.toString() +'px;');
-        
+        });
         $('#input').keypress(function(e){
         if(e.keyCode==13)
           $('#send').click();
@@ -149,12 +149,7 @@ button:focus {
           $('#input').val('');
           return false;
         });
-        socket.on('username, function(usnm){
-          sentusn = usnm;          
-        });
-        if (sentusn === undefined){
-          sentusn = "Error Code 001: Username not sent";
-        }
+        
         socket.on('chat message', function(msg){
           $('#messages').append("<div class=\"message\"><p class=\"username\">" + sentusn + "</p><p class=\"messagetext\">" + msg + "</p></div>");
         });
