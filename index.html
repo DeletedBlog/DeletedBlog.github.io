@@ -4,36 +4,170 @@
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px }
+      body {
+  margin:0;
+  padding:0;
+  overflow:hidden;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+#header {
+  background-color:#212121;
+  height: 100px;
+  width: 100%;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  overflow:hidden;
+}
+#body {
+  background-color:#ffffff;
+  height: 800px;
+  width: 100%;
+  box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.75);
+}
+#contactbar {
+  height:50px;
+  width:100%;
+  background-color:#2d2d2d;
+  box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.75);
+  position:absolute;
+  top:50px;
+  margin:0;
+  padding:0;
+}
+#name {
+  font-family: "Quicksand", "Sans-Serif";
+  margin: 0;
+  padding: 0;
+  font-size:45px;
+  position: absolute;
+  top:-1px;
+  color: #ffffff;
+}
+#sendbar {
+  position:absolute;
+  bottom:0;
+  height: 50px;
+  width:100%;
+  background-color: #2d2d2d;
+}
+#inputbg {
+  position:absolute;
+  bottom: 12.5px;
+  right: 10%;
+  border: none;
+  height:25px;
+  width: 80%;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+  border-radius: 25px;
+  background-color: #ffffff;
+}
+#input {
+  position:absolute;
+  bottom: -1px;
+  left: 2.5%;
+  border: none;
+  height:25px;
+  width: 95%;
+  border-radius: 25px;
+  background-color: transparent;
+  font-family: "Quicksand", "Sans-Serif";
+  color: black;
+  font-size: 20px;
+}
+#send {
+  border-radius: 25px;
+  border:none;
+  background-color: #ffffff;
+  box-shadow: 0px 10px 10px -2px rgba(0,0,0,0.75);
+}
+.message {
+  overflow: hidden;
+  background-color: #474747;
+  width: 100%;
+  min-height: 50px;
+  height: auto;
+  font-family:"Quicksand", "Sans-Serif";
+  border: 1px solid gray;
+  box-shadow: inset 0px 10px 10px -2px rgba(0,0,0,0.75);
+}
+.username {
+  position: relative;
+  top: 0;
+  left: 5px;
+  margin: 0;
+  padding: 0;
+  color: gray;
+}
+.timesent {
+  text-align:right;
+  position: relative;
+  top: -17px;
+  right: 5px;
+  font-size: 10px;
+  color: gray;
+  margin: 0;
+  padding: 0;
+}
+.messagetext {
+  margin: 0;
+  padding:0;
+  position: relative;
+  top: -3px;
+  color: white;
+  width: 100%;
+  word-wrap: break-word;
+}
+#messages {
+  overflow: scroll;
+  width: 100%;
+  height: 423px;
+}
+#wip {
+  color:white;
+}
     </style>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
         var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
+        $('#input').keypress(function(e){
+        if(e.keyCode==13)
+          $('#send').click();
+        });
+        $("#send").click(function(){
+          socket.emit('chat message', $('#input').val());
+          $('#input').val('');
           return false;
         });
         socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
+          $('#messages').append("<div class=\"message\"><p class=\"username\">Usernames Soon!</p><p class=\"messagetext\">" + msg + "</p></div>");
         });
       });
     </script>
+    <div id="header">
+      <p id="name">Chatsup</p>
+      <div id="contactbar">
+        <p id="wip">Online Users and Profile Pics Coming Soon</p>
+      </div>
+    </div>
+    <div id="body">
+      <div id="messages">
+        
+      </div>
+      <div id="sendbar">
+        <div id="inputbg">
+          <input id="input">
+        </div>
+        <button id="send" style="position: absolute; right: 2%; bottom: 17px;">Send</button>
+      </div>
+    </div>
   </body>
 </html>
