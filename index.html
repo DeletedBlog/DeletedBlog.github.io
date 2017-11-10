@@ -135,12 +135,12 @@ button:focus {
       $(function () {
         var socket = io();
         $(document).ready(function(){
-          usnmenter = function(){
+          function usnmenter(){
             enteredusnm = window.prompt("What is your username?","anonymous");
             if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
               usnmenter();
-            };
-          };
+            }
+          }
           if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
             usnmenter();
           };
