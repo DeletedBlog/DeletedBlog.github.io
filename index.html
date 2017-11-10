@@ -144,8 +144,8 @@ button:focus {
           $('#send').click();
         });
         $("#send").click(function(){
-          socket.emit('chat message', $('#input').val());
           socket.emit('username', enteredusnm);
+          socket.emit('chat message', $('#input').val());
           $('#input').val('');
           return false;
         });
