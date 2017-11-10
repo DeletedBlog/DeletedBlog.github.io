@@ -135,7 +135,7 @@ button:focus {
       $(function () {
         var socket = io();
         $(document).ready(function(){
-          username = window.prompt("What is your username?","Anoymous");
+          username = window.prompt("What is your username?","Not working IGNORE THIS");
           var msgheight = $(window).height() - 150;
           $("#messages").attr('style',' overflow: scroll; width: 100%; height: ' + msgheight.toString() +'px;');
         });
@@ -145,15 +145,11 @@ button:focus {
         });
         $("#send").click(function(){
           socket.emit('chat message', $('#input').val());
-          socket.emit('username', username);
           $('#input').val('');
           return false;
         });
         socket.on('chat message', function(msg){
-          socket.on('username', function(usnm){
-            sentusn = usnm;
-          });
-          $('#messages').append("<div class=\"message\"><p class=\"username\">" + sentusn + "</p><p class=\"messagetext\">" + msg + "</p></div>");
+          $('#messages').append("<div class=\"message\"><p class=\"username\">" + "NONFUNCTIONING ERROR CODE 001" + "</p><p class=\"messagetext\">" + msg + "</p></div>");
         });
       });
     </script>
