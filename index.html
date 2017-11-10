@@ -136,14 +136,13 @@ button:focus {
         var socket = io();
         $(document).ready(function(){
           function usnmenter(){
-            enteredusnm = window.prompt("What is your username?","anonymous");
+          enteredusnm = window.prompt("What is your username?","anonymous");
+          if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
+            enteredusnm = window.prompt("Enter something this time","anonymous");
             if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
-              usnmenter();
+              window.location("https://www.google.com/search?q=how+to+not+be+an+idot&ie=utf-8&oe=utf-8");
             }
           }
-          if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
-            usnmenter();
-          };
           var msgheight = $(window).height() - 150;
           $("#messages").attr('style',' overflow: scroll; width: 100%; height: ' + msgheight.toString() +'px;');
         });
