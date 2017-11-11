@@ -138,6 +138,8 @@ button:focus {
       $(function () {
         var socket = io();
         $(document).ready(function(){
+          var msgheight = $(window).height() - 150;
+          $("#messages").attr('style',' overflow-y: scroll; overflow-x: hidden; width: 100%; height: ' + msgheight.toString() +'px;');
           enteredusnm = window.prompt("What is your username?","anonymous");
           if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
             enteredusnm = window.prompt("Enter something this time","anonymous");
@@ -145,8 +147,6 @@ button:focus {
               window.location = "https://www.google.com/search?q=how+to+not+be+an+idiot&ie=utf-8&oe=utf-8";
             }
           }
-          var msgheight = $(window).height() - 150;
-          $("#messages").attr('style',' overflow: scroll; width: 100%; height: ' + msgheight.toString() +'px;');
         });
         $('#input').keypress(function(e){
         if(e.keyCode==13)
