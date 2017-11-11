@@ -94,7 +94,6 @@ button:focus {
   height: auto;
   font-family:"Quicksand", "Sans-Serif";
   border: 1px solid gray;
-  box-shadow: inset 0px 10px 10px -2px rgba(0,0,0,0.75);
 }
 .username {
   position: relative;
@@ -152,6 +151,9 @@ button:focus {
         });
         $("#send").click(function(){
           socket.emit('username', enteredusnm);
+          if ($('#input').val == '' || $('#input').val == ' ' || $('#input').val === '  ' || $('#input').val === '   ' || $('#input').val === '   ') {
+            return;
+          }
           socket.emit('chat message', $('#input').val());
           $('#input').val('');
           return false;
