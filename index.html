@@ -134,6 +134,7 @@ button:focus {
         var socket = io();
         $(document).ready(function(){
           var msgheight = $(window).height() - 150;
+          color = 0;
           $("#messages").attr('style',' overflow-y: scroll; overflow-x: hidden; width: 100%; height: ' + msgheight.toString() +'px;');
           enteredusnm = window.prompt("What is your username?","anonymous");
           if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
