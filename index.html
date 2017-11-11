@@ -151,7 +151,7 @@ button:focus {
         });
         $("#send").click(function(){
           socket.emit('username', enteredusnm);
-          if ($('#input').val == '' || $('#input').val == ' ' || $('#input').val === '  ' || $('#input').val === '   ' || $('#input').val === '   ') {
+          if ($('#input').val() == '' || $('#input').val() == ' ' || $('#input').val() == '  ' || $('#input').val() == '   ' || $('#input').val() == '   ') {
             return;
           }
           socket.emit('chat message', $('#input').val());
