@@ -11,6 +11,9 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
+  socket.on('online', function(onln){
+    io.emit('online', onln);
+  });
   socket.on('username', function(usnm){
     io.emit('username', usnm);
   });
