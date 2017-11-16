@@ -8,14 +8,16 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('join', function(room){
+    socket.leave(socket.room);
+    socket.join(room);
+    joinedroom = room;
   });
-  socket.on('online', function(onln){
-    io.emit('online', onln);
+  socket.on('chat message', function(msg){
+    io.to(joinedroom).emit('chat message', msg);
   });
   socket.on('username', function(usnm){
-    io.emit('username', usnm);
+    io.to(joinedroom).emit('username', usnm);
   });
 });
 
