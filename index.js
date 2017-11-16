@@ -16,10 +16,10 @@ io.on('connection', function(socket){
     joinedroom = room;
   });
   socket.on('chat message', function(msg){
-    io.to(joinedroom).emit('chat message', msg);
+    io.in(joinedroom).emit('chat message', msg);
   });
   socket.on('username', function(usnm){
-    io.to(joinedroom).emit('username', usnm);
+    io.in(joinedroom).emit('username', usnm);
   });
 });
 
