@@ -164,14 +164,6 @@ button:focus {
           var msgheight = $(window).height() - 150;
           color = 0;
           rbowcolor = 0;
-          setInterval(function(){
-            $(".hope").attr("style", "background-color: hsl(" + rbowcolor + ", 100%, 50%);")
-            if (rbowcolor >= 360) {
-              rbowcolor = 0;
-            } else {
-              rbowcolor = rbowcolor + 1;
-            }
-          }, 10);
           defaultroom = "public";
           $("#messages").attr('style',' overflow-y: scroll; overflow-x: hidden; width: 100%; height: ' + msgheight.toString() +'px;');
           enteredusnm = window.prompt("What is your username?","anonymous");
@@ -182,6 +174,14 @@ button:focus {
             }
           }
           socket.emit('join', defaultroom);
+          setInterval(function(){
+            $(".hope").attr("style", "background-color: hsl(" + rbowcolor + ", 100%, 50%);")
+            if (rbowcolor >= 360) {
+              rbowcolor = 0;
+            } else {
+              rbowcolor = rbowcolor + 1;
+            }
+          }, 10);
         });
         $('#input').keypress(function(e){
         if(e.keyCode==13)
@@ -215,9 +215,9 @@ button:focus {
           dispcolor = "#90A4AE";
           color = 0;
         }
-        if (receivedusnm.lower() !== "hope"){
+        if (receivedusnm.toLowerCase() !== "hope"){
           $("#messages").append("<div class=\"message\" style = \" background-color: " + dispcolor + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
-        } else if (receivedusnm.lower() == "hope") {
+        } else if (receivedusnm.toLowerCase() == "hope") {
           $("#messages").append("<div class=\"message hope\"><p class=\"usernamehope\">" + receivedusnm + "</p><p class=\"messagetexthope\">" + msg + "</p></div>");
         }
         $("#messages").scrollTop($("#messages")[0].scrollHeight);
