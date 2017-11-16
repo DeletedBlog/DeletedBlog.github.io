@@ -9,7 +9,9 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   socket.on('join', function(room){
-    socket.leave(socket.room);
+    if (joinedroom != undefined){
+      socket.leave(joinedroom);
+    }
     socket.join(room);
     joinedroom = room;
   });
