@@ -14,11 +14,7 @@ io.on('connection', function(socket){
     }
     socket.join(room);
     socket.room = room;
-    if (socket.username != undefined) {
-      io.sockets.in(socket.room).emit('chat message', socket.username + "has joined your channel");
-    } else {
-      io.sockets.in(socket.room).emit('chat message', "anonymous has joined your channel")
-    }
+    
   });
   socket.on('chat message', function(msg){
     io.sockets.in(socket.room).emit('chat message', msg);
