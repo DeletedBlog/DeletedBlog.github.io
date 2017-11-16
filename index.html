@@ -85,6 +85,13 @@ button:focus {
   background-color: #ffffff;
   box-shadow: 0px 10px 10px -2px rgba(0,0,0,0.75);
 }
+#joinroom {
+  border-radius: 25px;
+  border:none;
+  font-family:"Roboto";
+  background-color: #ffffff;
+  box-shadow: 0px 10px 10px -2px rgba(0,0,0,0.75);
+}
 .message {
   overflow: hidden;
   width: 100%;
@@ -136,6 +143,8 @@ button:focus {
         $(document).ready(function(){
           var msgheight = $(window).height() - 150;
           color = 0;
+          defaultroom = public;
+          socket.emit('join', defaultroom);
           $("#messages").attr('style',' overflow-y: scroll; overflow-x: hidden; width: 100%; height: ' + msgheight.toString() +'px;');
           enteredusnm = window.prompt("What is your username?","anonymous");
           if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
@@ -148,6 +157,14 @@ button:focus {
         $('#input').keypress(function(e){
         if(e.keyCode==13)
           $('#send').click();
+        });
+        $("#joinroom").click(function(){
+          joinroom = window.prompt("What room would you like to join?", "public");
+          if (joinroom == undefined || joinroom == "" || joinroom == null) {
+            return
+          } else {
+            socket.emit("join", joinroom);
+          }
         });
         $("#send").click(function(){
           socket.emit('username', enteredusnm);
@@ -176,6 +193,7 @@ button:focus {
     </script>
     <div id="header">
       <p id="name">J.A.W.S Chat 1.0.1</p>
+      <button id="joinroom">Join Room</button>
       <div id="contactbar">
         <p id="wip">Multiple chat rooms soon! Be on the lookout within the next few weeks!</p>
       </div>
