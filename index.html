@@ -146,7 +146,6 @@ button:focus {
           var msgheight = $(window).height() - 150;
           color = 0;
           defaultroom = "public";
-          socket.emit('join', defaultroom);
           $("#messages").attr('style',' overflow-y: scroll; overflow-x: hidden; width: 100%; height: ' + msgheight.toString() +'px;');
           enteredusnm = window.prompt("What is your username?","anonymous");
           if (enteredusnm == undefined || enteredusnm == "" || enteredusnm == null){
@@ -155,6 +154,8 @@ button:focus {
               window.location = "https://www.google.com/search?q=how+to+not+be+an+idiot&ie=utf-8&oe=utf-8";
             }
           }
+          socket.emit('username', enteredusnm);
+          socket.emit('join', defaultroom);
         });
         $('#input').keypress(function(e){
         if(e.keyCode==13)
