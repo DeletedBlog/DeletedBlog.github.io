@@ -152,6 +152,27 @@ button:focus {
   color:white;
   font-family: "Roboto";
 }
+.action{
+  height: 50px;
+  position: absolute;
+  bottom:0;
+  width: 50%;
+  text-align: center;
+}
+.action:hover{
+  background-color: #4d6470;
+  box-shadow: inset 0px 5px 5px -2px rgba(0,0,0,0.75);
+}
+#action1{
+  left: 0;
+}
+#action2{
+  right:0;
+}
+.actionbutton{
+  color: white;
+  font-family: "Roboto", "Sans-Serif";
+}
     </style>
     <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
   </head>
@@ -229,7 +250,12 @@ button:focus {
       <p id="name">Javascript And WebSocket Chat 1.1.0</p>
       <button id="joinroom">Join Room</button>
       <div id="contactbar">
-        <p id="wip">Multiple Chat Rooms Added! + A secret for someone close to me.</p>
+        <div class="action" id="action1">
+          <p class="actionbutton">Change Username</p>
+        </div>
+        <div class="action" id="action2">
+          <p class="actionbutton">Change Room</p>
+        </div>
       </div>
     </div>
     <div id="body">
