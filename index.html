@@ -222,6 +222,7 @@ a:hover {
   width: 100%;
   height: 50px;
   position: absolute;
+  text-align: center;
 }
 .menufunction:hover{
   background-color:#546E7A;
@@ -257,7 +258,7 @@ a:hover {
           $('#send').click();
         });
         $("#menuopen").click(function(){
-          $("body").append("<div id=\"menu\"><a><div id=\"menuclose\"><b>X</b></div></a><a><div id=\"menufunction1\" class=\"menufunction\"></div><div id=\"menufunction2\" class=\"menufunction\"></div><div id=\"menufunction3\" class=\"menufunction\"></div></a></div>");
+          $("body").append("<div id=\"menu\"><a><div id=\"menuclose\"><b>X</b></div></a><a><div id=\"menufunction1\" class=\"menufunction\"><p class="actionbutton">Change Username</p></div><div id=\"menufunction2\" class=\"menufunction\"><p class="actionbutton">Change Room</p></div><div id=\"menufunction3\" class=\"menufunction\"><p class="actionbutton">About The App</p></div></a></div>");
           $("#menuclose").click(function(){
             $("#menu").remove();
           });
@@ -307,13 +308,10 @@ a:hover {
       <a id="menulink">
         <div id="menuopen">
           <div class="menuline" id="line1">
-            <p class="actionbutton">Change Username</p>
           </div>
           <div class="menuline" id="line2">
-            <p class="actionbutton">Change Room</p>
           </div>
           <div class="menuline" id="line3">
-            <p class="actionbutton">About Us</p>
           </div>
         </div>
       </a>
