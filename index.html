@@ -273,13 +273,13 @@ a:hover {
           dispcolor = "#90A4AE";
           color = 0;
         }
-        if (receivedusnm.toLowerCase() !== "hope" || receivedusnm.toLowerCase() !== "rainbow"){
-          $("#messages").append("<div class=\"message\" style = \" background-color: " + dispcolor + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
-        } else if (receivedusnm.toLowerCase() == "rainbow") {
+        if (receivedusnm.toLowerCase() == "rainbow") {
           $("#messages").append("<div class=\"message rbow\"><p class=\"usernamerbow\">" + receivedusnm + "</p><p class=\"messagetextrbow\">" + msg + "</p></div>");
         } else if (receivedusnm.toLowerCase() == "hope") {
           $("#messages").append("<div class=\"message\" style = \"background-color: " + dispcolorhope + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
-        }
+        } else {
+          $("#messages").append("<div class=\"message\" style = \" background-color: " + dispcolor + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
+        } 
         $("#messages").scrollTop($("#messages")[0].scrollHeight);
         });
       });
