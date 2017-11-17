@@ -163,6 +163,69 @@ button:focus {
   font-family: "Roboto", "Sans-Serif";
   font-size: 30px;
 }
+#menuopen{
+  height:30px;
+  width: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.menuline{
+ height: 6px; 
+ width: 30px;
+ background-color: #ECEFF1;
+ position:absolute;
+ border-radius: 2px;
+ box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.75);
+}
+#line1{ 
+  top:0;
+}
+#line2{
+  top:12px;
+}
+#line3{
+  bottom:0;
+}
+a:hover {
+  cursor:pointer;
+}
+#menu {
+  position: fixed;
+  right: 0;
+  top:0;
+  min-width:33%;
+  max-width: 90%;
+  width: auto;
+  height: 100vh;
+  background-color: #455A64;
+  box-shadow: 0px 10px 8px 3px rgba(0,0,0,0.75);
+}
+#menuclose{
+  color: white;
+  font-family: Impact;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 30px;
+}
+#menufunction1 {
+  top: 50px;
+}
+#menufunction2 {
+  top:100px;
+}
+#menufunction3{
+  top: 150px;
+}
+.menufunction{
+  width: 300px;
+  height: 50px;
+  position: absolute;
+}
+.menufunction:hover{
+  background-color:#546E7A;
+}
     </style>
     <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
   </head>
@@ -192,6 +255,12 @@ button:focus {
         $('#input').keypress(function(e){
         if(e.keyCode==13)
           $('#send').click();
+        });
+        $("#menuopen").click(function(){
+          $("body").append("<div id=\"menu\"><a><div id=\"menuclose\"><b>X</b></div></a><a><div id=\"menufunction1\" class=\"menufunction\"></div><div id=\"menufunction2\" class=\"menufunction\"></div><div id=\"menufunction3\" class=\"menufunction\"></div></a></div>");
+          $("#menuclose").click(function(){
+            $("#menu").remove();
+          });
         });
         $("#action1").click(function(){
           enteredusnm = window.prompt("What is your new username?", "anonymous");
