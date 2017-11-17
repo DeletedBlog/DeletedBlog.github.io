@@ -211,6 +211,7 @@ a:hover {
 }
 #menufunction1 {
   top: 50px;
+  border-width: 2px 0 2px 0;
 }
 #menufunction2 {
   top:100px;
@@ -222,7 +223,9 @@ a:hover {
   width: 100%;
   height: 50px;
   position: absolute;
-  text-align: center;
+  border-color:#37474F;
+  border-width: 0 0 2px 0;
+  border-style:solid;
 }
 .menufunction:hover{
   background-color:#546E7A;
@@ -237,7 +240,7 @@ a:hover {
       $(function () {
         var socket = io();
         $(document).ready(function(){
-          var msgheight = $(window).height() - 150;
+          var msgheight = $(window).height() - 100;
           color = 0;
           rbowcolor = 0;
           defaultroom = "public";
@@ -262,17 +265,17 @@ a:hover {
           $("#menuclose").click(function(){
             $("#menu").remove();
           });
-        });
-        $("#action1").click(function(){
-          enteredusnm = window.prompt("What is your new username?", "anonymous");
-        });
-        $("#action2").click(function(){
-          joinroom = window.prompt("What room would you like to join?", "public");
-          if (joinroom == undefined || joinroom == "" || joinroom == null) {
-            return
-          } else {
-            socket.emit("join", joinroom);
-          }
+          $("#menufunction1").click(function(){
+            enteredusnm = window.prompt("What is your new username?", "anonymous");
+          });
+          $("#menufunction2").click(function(){
+            joinroom = window.prompt("What room would you like to join?", "public");
+            if (joinroom == undefined || joinroom == "" || joinroom == null) {
+              return
+            } else {
+              socket.emit("join", joinroom);
+            }
+          });
         });
         $("#send").click(function(){
           socket.emit('username', enteredusnm);
@@ -315,14 +318,6 @@ a:hover {
           </div>
         </div>
       </a>
-      <div id="contactbar">
-        <div class="action" id="action1">
-          <p class="actionbutton">Change Username</p>
-        </div>
-        <div class="action" id="action2">
-          <p class="actionbutton">Change Room</p>
-        </div>
-      </div>
     </div>
     <div id="body">
       <div id="messages" style=" overflow: scroll; width: 100%; height: 423px;">
