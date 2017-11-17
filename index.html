@@ -83,6 +83,7 @@ button:focus {
   font-family:"Roboto", "Sans-Serif";
   box-shadow: inset 0px 5px 5px -2px rgba(0,0,0,0.75);
 }
+      
 .username {
   position: relative;
   top: 0;
@@ -91,7 +92,7 @@ button:focus {
   padding: 0;
   color: #ECEFF1;
 }
-.usernamehope {
+.usernamerbow {
   position: relative;
   top: 0;
   left: 5px;
@@ -118,7 +119,7 @@ button:focus {
   top: -2px;
   word-wrap: break-word;
 }
-.messagetexthope {
+.messagetextrbow {
   margin: 0;
   padding:0;
   position: relative;
@@ -218,7 +219,7 @@ a:hover {
           enteredusnm = "anonymous";
           socket.emit('join', defaultroom);
           setInterval(function(){
-            $(".hope").attr("style", "background-color: hsl(" + rbowcolor + ", 100%, 50%);")
+            $(".rbow").attr("style", "background-color: hsl(" + rbowcolor + ", 100%, 50%);")
             if (rbowcolor >= 360) {
               rbowcolor = 0;
             } else {
@@ -270,10 +271,19 @@ a:hover {
           dispcolor = "#90A4AE";
           color = 0;
         }
-        if (receivedusnm.toLowerCase() !== "hope"){
+        if (color === 0){
+          dispcolorhope = "#E91E63";
+          color = 1;
+        } else if (color === 1){
+          dispcolorhope = "#EC407A";
+          color = 0;
+        }
+        if (receivedusnm.toLowerCase() !== "hope" || receivedusnm.toLowerCase() !== "rainbow"){
           $("#messages").append("<div class=\"message\" style = \" background-color: " + dispcolor + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
-        } else if (receivedusnm.toLowerCase() == "hope") {
-          $("#messages").append("<div class=\"message hope\"><p class=\"usernamehope\">" + receivedusnm + "</p><p class=\"messagetexthope\">" + msg + "</p></div>");
+        } else if (receivedusnm.toLowerCase() == "rainbow") {
+          $("#messages").append("<div class=\"message rbow\"><p class=\"usernamerbow\">" + receivedusnm + "</p><p class=\"messagetextrbow\">" + msg + "</p></div>");
+        } else if (receivedusnm.toLowerCase() == "hope" {
+          $("#messages").append("<div class=\"message\" style = \"background-color: " + dispcolorhope + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
         }
         $("#messages").scrollTop($("#messages")[0].scrollHeight);
         });
