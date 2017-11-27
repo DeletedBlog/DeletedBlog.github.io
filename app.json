@@ -1,9 +1,8 @@
 {
-  "name": "Socket-Chat-Example",
-  "description": "my first socket.io app",
-  "website": "https://github.com/socketio/chat-example",
-  "repository": "https://github.com/socketio/chat-example",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "name": "JawsChat",
+  "description": "Javascript and Websocket instant messenger",
+  "website": "jawschat.herokuapp.com",
+  "repository": "https://github.com/chatsup/chatsup.github.io",
   "success_url": "/",
   "keywords": [
     "node",
