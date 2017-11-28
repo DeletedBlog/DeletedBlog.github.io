@@ -276,7 +276,7 @@ a:hover {
           dispcolor = "#90A4AE";
           color = 0;
         }
-        if (received.usnm.toLowerCase().endsWith("rainbow") || received.usnm.toLowerCase().startsWith("rainbow")) {
+        if (received.usnm.toLowerCase() == "rainbow") {
           $("#messages").append("<div class=\"message rbow\"><p class=\"usernamerbow\">" + receivedusnm + "</p><p class=\"messagetextrbow\">" + msg + "</p></div>");
         } else if (receivedusnm.toLowerCase() == "hope") {
           $("#messages").append("<div class=\"message\" style = \"background-color: " + dispcolorhope + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
