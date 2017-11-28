@@ -248,7 +248,7 @@ a:hover {
             }
           });
           $("#menufunction3").click(function(){
-            alert("Javascript and Websocket instant messenger. For Hope. Source: github.com/chatsup/chatsup.github.io Version 1.1.1");
+            alert("Javascript and Websocket instant messenger. Source: github.com/chatsup/chatsup.github.io Version 1.1.1");
           });
         });
         $("#send").click(function(){
@@ -266,17 +266,13 @@ a:hover {
         socket.on('chat message', function(msg){
         if (color === 0){
           dispcolor = "#607D8B";
-          dispcolorhope = "#F50057";
           color = 1;
         } else if (color === 1){
-          dispcolorhope = "#E91E63";
           dispcolor = "#90A4AE";
           color = 0;
         }
         if (receivedusnm.toLowerCase().includes("rainbow")) {
           $("#messages").append("<div class=\"message rbow\"><p class=\"usernamerbow\">" + receivedusnm + "</p><p class=\"messagetextrbow\">" + msg + "</p></div>");
-        } else if (receivedusnm.toLowerCase() == "hope") {
-          $("#messages").append("<div class=\"message\" style = \"background-color: " + dispcolorhope + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
         } else {
           $("#messages").append("<div class=\"message\" style = \" background-color: " + dispcolor + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
         } 
