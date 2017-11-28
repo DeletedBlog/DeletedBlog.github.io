@@ -189,9 +189,6 @@ a:hover {
 #menufunction3{
   top: 150px;
 }
-#menufunction4{
-  top:200px;
-}
 .menufunction{
   width: 100%;
   height: 50px;
@@ -276,7 +273,7 @@ a:hover {
           dispcolor = "#90A4AE";
           color = 0;
         }
-        if (received.usnm.toLowerCase() == "rainbow") {
+        if (receivedusnm.toLowerCase() == "rainbow") {
           $("#messages").append("<div class=\"message rbow\"><p class=\"usernamerbow\">" + receivedusnm + "</p><p class=\"messagetextrbow\">" + msg + "</p></div>");
         } else if (receivedusnm.toLowerCase() == "hope") {
           $("#messages").append("<div class=\"message\" style = \"background-color: " + dispcolorhope + " ;\"><p class=\"username\">" + receivedusnm + "</p><p class=\"messagetext\">" + msg + "</p></div>");
