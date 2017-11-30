@@ -17,40 +17,40 @@ button:focus {
 }
 #header {
   background-color:#263238;
-  height: 50px;
-  width: 100%;
+  height: 10vh;
+  width: 100vw;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   overflow:hidden;
 }
 #body {
   background-color:#ffffff;
-  height: 800px;
-  width: 100%;
+  height: 80vh;
+  width: 100vw;
   box-shadow: inset 0px 3px 5px 0px rgba(0,0,0,0.75);
 }
 #name {
   font-family: "Roboto", "Sans-Serif";
   margin: 0;
   padding: 0;
-  font-size:40px;
+  font-size:8vh;
   position: absolute;
-  top:-1px;
+  top:-0.2vh;
   color: #ffffff;
 }
 #sendbar {
   position:absolute;
   bottom:0;
-  height: 50px;
-  width:100%;
+  height: 10vh;
+  width:100vw;
   background-color: #263238;
 }
 #inputbg {
   position:absolute;
-  bottom: 12.5px;
-  right: 10%;
+  bottom: 2.5vh;
+  right: 7.5vw;
   border: none;
-  height:25px;
-  width: 80%;
+  height:5vh;
+  width: 85vw;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
   border-radius: 25px;
   background-color: #ffffff;
@@ -60,13 +60,13 @@ button:focus {
   bottom: -1px;
   left: 2.5%;
   border: none;
-  height:25px;
+  height:5vh;
   width: 95%;
   border-radius: 25px;
   background-color: transparent;
   font-family: "Roboto", "Sans-Serif";
   color: black;
-  font-size: 20px;
+  font-size: 4vh;
 }
 #send {
   border-radius: 25px;
@@ -99,16 +99,6 @@ button:focus {
   margin: 0;
   padding: 0;
   color: #161616;
-}
-.timesent {
-  text-align:right;
-  position: relative;
-  top: -17px;
-  right: 5px;
-  font-size: 10px;
-  color: white;
-  margin: 0;
-  padding: 0;
 }
 .messagetext {
   margin: 0;
@@ -201,6 +191,12 @@ a:hover {
 .menufunction:hover{
   background-color:#546E7A;
 }
+#messages{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  height: 80vh;
+}
     </style>
     <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
   </head>
@@ -211,11 +207,9 @@ a:hover {
       $(function () {
         var socket = io();
         $(document).ready(function(){
-          var msgheight = $(window).height() - 100;
           color = 0;
           rbowcolor = 0;
           defaultroom = "public";
-          $("#messages").attr('style',' overflow-y: scroll; overflow-x: hidden; width: 100%; height: ' + msgheight.toString() +'px;');
           enteredusnm = "anonymous";
           socket.emit('join', defaultroom);
           setInterval(function(){
