@@ -212,6 +212,9 @@ a:hover {
         var socket = io();
         $(document).ready(function(){
           var msgheight = $(window).height() - 100;
+          if(Notification.permission = "denied" || Notification.permission = "default") {
+            Notification.requestPermission;
+          }
           color = 0;
           rbowcolor = 0;
           defaultroom = "public";
