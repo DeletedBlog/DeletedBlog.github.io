@@ -25,11 +25,13 @@ io.on('connection', function(socket){
         genID();
       } else {
         usedIds.append(msgid);
+        console.log(msgid);
         msgid = msgid.toString;
+        console.log(msgid);
+        io.sockets.in(socket.room).emit('message id', msgid);
       }
     }
     io.sockets.in(socket.room).emit('chat message', msg);
-    io.sockets.in(socket.room).emit('message id', msgid);
   });
   socket.on('username', function(usnm){
     io.sockets.in(socket.room).emit('username', usnm);
