@@ -23,10 +23,13 @@ io.on('connection', function(socket){
       msgid = Math.floor(Math.random() * 1000000);
       if (usedIds.indexOf(msgid) != -1) {
         genID();
+      } else {
+        usedIds.append(msgid);
+        msgid = msgid.toString;
       }
     }
-    io.sockets.in(socket.room).emit('message id', msgid);
     io.sockets.in(socket.room).emit('chat message', msg);
+    io.sockets.in(socket.room).emit('message id', msgid);
   });
   socket.on('username', function(usnm){
     io.sockets.in(socket.room).emit('username', usnm);
