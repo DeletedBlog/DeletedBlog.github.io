@@ -268,7 +268,7 @@ a:hover {
         });
         socket.on('message id', function(id){
           msgId = id;
-        }
+        });
         socket.on('chat message', function(msg){
         if (msgId == undefined) {
           msgId = "null";
