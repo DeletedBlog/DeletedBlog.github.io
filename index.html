@@ -3,7 +3,7 @@
   <head>
     <title>JAWS Chat</title>
     <!-- JAWS Stands for Javascript and Web Socket-->
-    <!-- Credits to the folks at Socket.io for the Socket.io service, and some of the code. This was made for some of my friends to talk to eachother. -->
+    <!-- Credits to the folks at Socket.io for the Socket.io service, and some of the base code. This was made for some of my friends to talk to eachother. -->
     <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -212,9 +212,6 @@ a:hover {
         var socket = io();
         $(document).ready(function(){
           var msgheight = $(window).height() - 100;
-          if(Notification.permission = "denied" || Notification.permission = "default") {
-            Notification.requestPermission;
-          }
           color = 0;
           rbowcolor = 0;
           defaultroom = "public";
@@ -270,7 +267,7 @@ a:hover {
           msgId = id;
         });
         socket.on('chat message', function(msg){
-        if (msgId == undefined) {
+        if (msgId === undefined) {
           msgId = "null";
         }
         if (color === 0){
