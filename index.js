@@ -7,6 +7,8 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+usedIds = [];
+
 io.on('connection', function(socket){
   socket.on('join', function(room){
     if (socket.room != undefined) {
@@ -17,6 +19,13 @@ io.on('connection', function(socket){
     
   });
   socket.on('chat message', function(msg){
+    function genID(){
+      msgid = Math.floor(Math.random() * 1000000);
+      if (usedIds.indexOf(msgid) != -1) {
+        genID();
+      }
+    }
+    io.sockets.in(socket.room).emit('message id', msgid);
     io.sockets.in(socket.room).emit('chat message', msg);
   });
   socket.on('username', function(usnm){
