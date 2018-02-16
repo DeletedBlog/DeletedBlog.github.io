@@ -208,6 +208,7 @@ a:hover {
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+      usedids = [];
       $(function () {
         var socket = io();
         $(document).ready(function(){
@@ -256,6 +257,17 @@ a:hover {
           if ($('#input').val() == '' || $('#input').val() == ' ' || $('#input').val() == '  ' || $('#input').val() == '   ' || $('#input').val() == '   ') {
             return;
           }
+          function genID(){
+            msgid = Math.floor(Math.random() * 1000000);
+            if (usedIds.indexOf(msgid) != -1) {
+              genID();
+            } else {
+              usedIds.append(msgid);
+              msgid = msgid.toString;
+              alert(msgid);
+            }
+          }
+          socket.emit('message id', msgid);
           socket.emit('chat message', $('#input').val());
           $('#input').val('');
           return false;
@@ -265,7 +277,7 @@ a:hover {
         });
         socket.on('message id', function(id){
           msgId = id;
-          alert(msgId)
+          alert(msgId);
         });
         socket.on('chat message', function(msg){
         if (msgId === undefined) {
