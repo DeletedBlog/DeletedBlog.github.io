@@ -19,20 +19,11 @@ io.on('connection', function(socket){
     
   });
   socket.on('chat message', function(msg){
-    function genID(){
-      msgid = Math.floor(Math.random() * 1000000);
-      if (usedIds.indexOf(msgid) != -1) {
-        genID();
-      } else {
-        usedIds.append(msgid);
-        console.log(msgid);
-        msgid = msgid.toString;
-        console.log(msgid);
-        io.sockets.in(socket.room).emit('message id', msgid);
-      }
-    }
     io.sockets.in(socket.room).emit('chat message', msg);
   });
+  socket.on('message id', function(msgid){
+    io.sockets.in(socket.room).emit('message id', msgid);
+  };
   socket.on('username', function(usnm){
     io.sockets.in(socket.room).emit('username', usnm);
     socket.username = usnm;
